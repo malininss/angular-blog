@@ -3,7 +3,6 @@ import { User } from '../../shared/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-login-page',
@@ -16,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   submitted = false;
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router
   ) { }
 
@@ -49,6 +48,8 @@ export class LoginPageComponent implements OnInit {
       .subscribe(() => {
         this.form.reset();
         this.router.navigate(['/admin', 'dashboard']);
+        this.submitted = false;
+      }, error => {
         this.submitted = false;
       });
   }
