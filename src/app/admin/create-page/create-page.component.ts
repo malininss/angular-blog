@@ -1,3 +1,4 @@
+import { AlertService } from './../shared/services/alert.service';
 import { PostService } from './../../shared/posts.service';
 import { Post } from './../../shared/interfaces';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -13,7 +14,8 @@ export class CreatePageComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -39,8 +41,8 @@ export class CreatePageComponent implements OnInit {
     this.postService.create(post)
       .subscribe(() => {
         this.form.reset();
+        this.alertService.success('Пост был создан');
       });
-    // console.log(post);
   }
 
 }

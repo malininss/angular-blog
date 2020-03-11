@@ -1,3 +1,4 @@
+import { AlertService } from './../shared/services/alert.service';
 import { PostService } from './../../shared/posts.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Post } from 'src/app/shared/interfaces';
@@ -16,7 +17,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   searchStr = '';
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -30,6 +32,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     this.deletePostSubscription = this.postService.remove(id)
       .subscribe(() => {
         this.posts = this.posts.filter(post => post.id !== id);
+        this.alertService.warning('Пост удалён');
       });
   }
 
