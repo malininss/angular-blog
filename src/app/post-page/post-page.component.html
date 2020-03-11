@@ -1,20 +1,24 @@
-<div class="post">
+<div *ngIf="post$ | async as post; else loading" >
 
-  <div class="header">
-    <h1>Post title</h1>
-    <button class="btn btn-link" routerLink="/">На главную</button>
+  <div class="post">
+
+    <div class="header">
+      <h1>{{ post.title }}</h1>
+      <button class="btn btn-link" routerLink="/">На главную</button>
+    </div>
+
+    <div class="info">
+      <strong>{{ post.author }}</strong>
+      <small>{{ post.date | date:'medium':null:'ru' }}</small>
+    </div>
+
+    <div>
+      <quill-view-html [content]="post.text"></quill-view-html>
+    </div>
+
   </div>
-
-  <div class="info">
-    <strong>Автор</strong>
-    <small>12.12.2019</small>
-  </div>
-
-  <div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint cum quod quibusdam consequuntur culpa similique dolorum. Autem, neque minus officiis deleniti earum pariatur rerum natus incidunt excepturi possimus molestias! Ex at impedit enim sint maiores minima sit fugit, expedita harum pariatur accusamus in ducimus qui quo obcaecati repudiandae nulla veritatis!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint cum quod quibusdam consequuntur culpa similique dolorum. Autem, neque minus officiis deleniti earum pariatur rerum natus incidunt excepturi possimus molestias! Ex at impedit enim sint maiores minima sit fugit, expedita harum pariatur accusamus in ducimus qui quo obcaecati repudiandae nulla veritatis!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint cum quod quibusdam consequuntur culpa similique dolorum. Autem, neque minus officiis deleniti earum pariatur rerum natus incidunt excepturi possimus molestias! Ex at impedit enim sint maiores minima sit fugit, expedita harum pariatur accusamus in ducimus qui quo obcaecati repudiandae nulla veritatis!</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint cum quod quibusdam consequuntur culpa similique dolorum. Autem, neque minus officiis deleniti earum pariatur rerum natus incidunt excepturi possimus molestias! Ex at impedit enim sint maiores minima sit fugit, expedita harum pariatur accusamus in ducimus qui quo obcaecati repudiandae nulla veritatis!</p>
-  </div>
-
 </div>
+
+<ng-template>
+  <p class="text-center">Идёт загрузка поста...</p>
+</ng-template>
