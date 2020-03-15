@@ -1,7 +1,15 @@
+<div class="title-block">
+  <div class="title-block__sotial"></div>
+  <div class="title-block__title">constellation</div>
+  <div class="title-block__text">If I create from the heart, nearly everything works; if from the head, almost nothing.</div>
+</div>
+
+
 <div class="posts" *ngIf="posts$ | async as posts; else loading">
   <app-post
     *ngFor="let post of posts"
     [post] = "post"
+    class="card-wrapper"
   ></app-post>
 </div>
 

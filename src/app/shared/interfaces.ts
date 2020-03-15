@@ -14,6 +14,7 @@ export interface Post {
   title: string;
   text: string;
   author: string;
+  image: any;
   date: Date;
 }
 

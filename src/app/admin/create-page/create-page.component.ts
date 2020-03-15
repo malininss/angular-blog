@@ -22,7 +22,8 @@ export class CreatePageComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(null, Validators.required),
       text: new FormControl(null, Validators.required),
-      author: new FormControl(null, Validators.required)
+      author: new FormControl(null, Validators.required),
+      image: new FormControl(null)
     });
   }
 
@@ -35,6 +36,7 @@ export class CreatePageComponent implements OnInit {
       title: this.form.value.title,
       author: this.form.value.author,
       text: this.form.value.text,
+      image: this.form.value.image,
       date: new Date()
     };
 
